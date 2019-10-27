@@ -1,6 +1,9 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
+// path to use environment variables
+const envparser = require('./env.parser')
+
 module.exports = function(ctx) {
   return {
     // app boot file (/src/boot)
@@ -68,6 +71,7 @@ module.exports = function(ctx) {
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
+      env: envparser(), // build function to load environment variables
       scopeHoisting: true,
       // vueRouterMode: 'history',
       // showProgress: false,
@@ -93,7 +97,7 @@ module.exports = function(ctx) {
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       // https: true,
-      port: 3030,
+      port: process.env.APP_DEV_SERVER_PORT,
       open: true // opens browser window automatically
     },
 
