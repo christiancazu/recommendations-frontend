@@ -133,7 +133,7 @@
 
 <script>
 export default {
-  name: 'MyLayout',
+  name: 'MainLayout',
 
   data() {
     return {
