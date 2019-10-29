@@ -9,8 +9,7 @@ Vue.use(VueRouter)
  * If not building with SSR mode, you can
  * directly export the Router instantiation
  */
-
-export default function(/* { store, ssrContext } */) {
+export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,

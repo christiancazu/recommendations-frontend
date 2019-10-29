@@ -1,10 +1,6 @@
-import {
- Cookies 
-} from 'quasar'
+import { Cookies } from 'quasar'
 
-import {
- Validator 
-} from 'vee-validate'
+import { Validator } from 'vee-validate'
 
 import Vue from 'vue'
 

@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-import {
- Notify 
-} from 'quasar'
+import { Notify } from 'quasar'
 
 const axiosInstance = axios.create({
   baseURL: process.env.API_URL
@@ -34,40 +32,40 @@ export default async ({ app, Vue, store, router }) => {
       let message = 'default'
 
       switch (status) {
-        // server error
-        case 500:
-          break
+      // server error
+      case 500:
+        break
         // session expired
-        case 401:
-          // if (store.getters['checkUser']) {
-          //   message = 'sessionExpired'
+      case 401:
+        // if (store.getters['checkUser']) {
+        //   message = 'sessionExpired'
 
-          //   store.commit('auth/LOGOUT')
-          //   router.push({ name: 'home' })
-          // }
-          break
+        //   store.commit('auth/LOGOUT')
+        //   router.push({ name: 'home' })
+        // }
+        break
         // not found
-        case 404:
-          message = error.response.data.message || 'notExists'
+      case 404:
+        message = error.response.data.message || 'notExists'
 
-          // store.commit('auth/LOGOUT')
-          // router.push({ name: 'home' })
-          break
+        // store.commit('auth/LOGOUT')
+        // router.push({ name: 'home' })
+        break
         // data invalid (Unprocessable Entity)
-        case 422:
-          message = 'invalidData'
+      case 422:
+        message = 'invalidData'
 
-          // store.commit('errors/SET_ERRORS', error.response.data.errors)
-          break
+        // store.commit('errors/SET_ERRORS', error.response.data.errors)
+        break
         // too many request
-        case 429:
-          message = 'tooManyRequest'
+      case 429:
+        message = 'tooManyRequest'
 
-          // store.commit('errors/SET_ERRORS', error.response.data.errors)
-          break
+        // store.commit('errors/SET_ERRORS', error.response.data.errors)
+        break
         // #TODO: default error response
-        default:
-          break
+      default:
+        break
       }
 
       Notify.create({

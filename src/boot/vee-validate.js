@@ -1,6 +1,4 @@
-import VeeValidate, {
- Validator 
-} from 'vee-validate'
+import VeeValidate, { Validator } from 'vee-validate'
 
 import validationMessages from 'vee-validate/dist/locale/es'
 

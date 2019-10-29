@@ -12,8 +12,7 @@ module.exports = {
 
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
   // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/recommended', 'prettier', 'prettier/vue'],
-
+  extends: ['plugin:vue/recommended', 'prettier/vue'],
   // required to lint *.vue files
   plugins: ['vue'],
 
@@ -29,22 +28,40 @@ module.exports = {
   rules: {
     // allow async-await
     'generator-star-spacing': 'off',
-    // allow paren-less arrow functions
     'arrow-parens': 'off',
     'one-var': 'off',
-    // 'import/first': 'off',
-    // 'import/extensions': 'off',
-    // 'import/no-unresolved': 'off',
-    // 'import/no-extraneous-dependencies': 'off',
     'prefer-promise-reject-errors': 'off',
-    quotes: ['error', 'single'],
-    // '@typescript-eslint/indent': ['warn', 2],
     semi: ['error', 'never'],
+    indent: [
+      'error',
+      2,
+      {
+        ArrayExpression: 1,
+        MemberExpression: 1,
+        ObjectExpression: 1,
+        ImportDeclaration: 1
+      }
+    ],
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'always',
+        named: 'always',
+        asyncArrow: 'always'
+      }
+    ],
     'array-element-newline': [
       'error',
       {
         multiline: true,
         minItems: 1
+      }
+    ],
+    'array-bracket-newline': [
+      'warn',
+      {
+        multiline: true,
+        minItems: 2
       }
     ],
     'object-curly-newline': [
@@ -61,7 +78,7 @@ module.exports = {
         ImportDeclaration: {
           multiline: true,
           consistent: true,
-          minProperties: 1
+          minProperties: 0
         }
       }
     ],
@@ -70,14 +87,14 @@ module.exports = {
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 
-    // Custom
+    // VUE
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'vue/max-attributes-per-line': [
       'error',
       {
         singleline: 1,
         multiline: {
-          max: 4,
+          max: 3,
           allowFirstLine: false
         }
       }
@@ -101,7 +118,6 @@ module.exports = {
       2,
       {
         attribute: 1,
-        baseIndent: 1,
         closeBracket: 0,
         alignAttributesVertically: true,
         baseIndent: 0

@@ -11,9 +11,7 @@
         @click="leftDrawerOpen = !leftDrawerOpen"
       />
 
-      <q-toolbar-title>
-        Quasar App
-      </q-toolbar-title>
+      <q-toolbar-title>Quasar App</q-toolbar-title>
 
       <div>Quasar v{{ $q.version }}</div>
     </q-toolbar>
@@ -30,7 +28,10 @@
         Essential Links
       </q-item-label>
       <q-item
-        clickable tag="a" target="_blank" href="https://quasar.dev"
+        clickable
+        tag="a"
+        target="_blank"
+        href="https://quasar.dev"
       >
         <q-item-section avatar>
           <q-icon name="school" />
@@ -135,7 +136,7 @@
 export default {
   name: 'MainLayout',
 
-  data() {
+  data () {
     return {
       leftDrawerOpen: false
     }
