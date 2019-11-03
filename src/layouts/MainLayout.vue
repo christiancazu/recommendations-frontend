@@ -4,7 +4,9 @@
   <the-toolbar />
 
   <q-page-container>
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
   </q-page-container>
 
 </q-layout>

@@ -8,5 +8,7 @@ export default {
     tooManyRequest: 'Too many requests have been made'
   },
   home: 'home',
-  success: 'Action was successful'
+  mentoring_system: 'Mentoring system',
+  success: 'Action was successful',
+  tutorship: 'tutorship'
 }

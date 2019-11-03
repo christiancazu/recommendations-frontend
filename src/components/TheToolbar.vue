@@ -1,8 +1,15 @@
 <template>
 <div>
+  <q-scroll-observer @scroll="onScrollObserver" />
+
   <q-header
-    elevated
-    class="row justify-center"
+    :elevated="elevatedOnScrollDown"
+    :class="[
+      { 'elevated-on-scroll-up': elevatedOnScrollUp,
+        'bg-transparent': !elevatedOnScrollDown
+      },
+      [`row justify-center`, 'text-shadow']
+    ]"
   >
     <q-toolbar class="col-md-10">
 
@@ -17,7 +24,7 @@
       </q-btn>
 
       <q-btn
-        :to="{ name: '' }"
+        :to="{ name: 'home' }"
         flat stretch
         :class="{ 'absolute-center': isScreenSm }"
       >
@@ -27,7 +34,7 @@
             class="img-logo"
           >
         </q-avatar>
-        <span class="q-mx-sm">tutoría</span>
+        <span class="q-mx-sm">{{ $t('tutorship') }}</span>
       </q-btn>
 
       <q-space />
@@ -52,6 +59,15 @@
     behavior="mobile"
   >
     <q-list>
+      <q-item
+        :to="{ name: 'home' }"
+        clickable
+        class="text-center text-uppercase text-black"
+      >
+        <q-item-section>
+          <q-item-label>{{ $t('home') }}</q-item-label>
+        </q-item-section>
+      </q-item>
 
       <q-item
         v-for="nav in navs" :key="nav"
@@ -74,35 +90,88 @@
 <script>
 export default {
   name: 'TheToolbar',
-
-  props: {
-    gtSm: { type: Boolean, default: false }, // gt-sm class mode
-    arrowRight: { type: Boolean, default: false }, // custom arrow direction
-  },
-
+  
   data () {
     return {
-      navs: [
-        'home',
-        'about'
-      ],
+      navs: ['about'],
       leftDrawerOpen: false,
+      elevatedOnPosition: 240,
+      scroll: {
+        position: 0,
+        direction: ''
+      },
+      assignedBgColor: ''
     }
   },
 
   computed: {
     isScreenSm () {
       return this.$q.screen.lt.sm
+    },
+
+    /**
+     * to apply elevated-on-scroll-up css clss
+     */
+    elevatedOnScrollUp () {
+      return this.scroll.position < this.elevatedOnPosition 
+        && this.scroll.direction === 'up' 
+        && this.$route.name === 'home'
+    },
+
+    /**
+     * apply elevated directive on header if not in home route
+     * or scroll.position > this.elevatedOnPosition
+     */
+    elevatedOnScrollDown () {
+      return this.$route.name !== 'home' ? true : this.scroll.position > this.elevatedOnPosition
     }
   },
 
+  watch: {
+    $route () {
+      this.verifyCurrentRouteToAssignBgColor()
+    }
+  },
+
+  mounted () {
+    this.verifyCurrentRouteToAssignBgColor()
+  },  
+
   methods: {
+    /**
+     * handler of q-scroll-observer component
+     */
+    onScrollObserver (info) {
+      this.scroll.position = info.position
+      this.scroll.direction = info.direction
+    },
+
+    verifyCurrentRouteToAssignBgColor (name = this.$route.name) {
+      this.assignedBgColor = name === 'home' ? 'transparent' : 'primary'
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .img-logo {
   transform: scale(.9)
+}
+.q-header {
+  transition: background-color 1s;
+}
+.q-layout__shadow {
+  animation: 1s forwards fadeInElevated;
+}
+.elevated-on-scroll-up {
+  animation: 1s forwards fadeOutElevated; 
+}
+@keyframes fadeInElevated {
+  0% {  opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeOutElevated {
+  0% { box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0px 10px rgba(0, 0, 0, 0.24); }
+  100% { box-shadow: 0 }
 }
 </style>

@@ -51,6 +51,8 @@ module.exports = function (ctx) {
         'QAvatar',
         'QBtnDropdown',
         'QBtn',
+        'QCarousel',
+        'QCarouselSlide',
         'QDrawer',
         'QHeader',
         'QIcon',
@@ -61,9 +63,9 @@ module.exports = function (ctx) {
         'QList',
         'QPage',
         'QPageContainer',
+        'QScrollObserver',
         'QSpace',
-        'QToolbar',
-        'QToolbarTitle'
+        'QToolbar'
       ],
 
       directives: [
@@ -97,7 +99,7 @@ module.exports = function (ctx) {
     build: {
       env: envparser(), // build function to load environment variables
       scopeHoisting: true,
-      // vueRouterMode: 'history',
+      vueRouterMode: 'history',
       // showProgress: false,
       // gzip: true,
       // analyze: true,

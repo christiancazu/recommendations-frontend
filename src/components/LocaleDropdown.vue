@@ -6,7 +6,9 @@
   stretch flat
   :class="{
     'gt-xs': gtXs,
-    'arrow-right full-width': arrowRight
+    'text-shadow' : gtXs,
+    'arrow-right full-width': arrowRight,
+    'sidebar-locale': arrowRight
   }"
 >
   <q-list separator>
@@ -62,10 +64,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
-// fix styles on btn dropdown
-.q-btn {
-  &__content {
+<style lang="scss">
+// fix styles on btn dropdown sidebar
+.sidebar-locale {
+  .q-btn__content {
     font-weight: 400;
     padding: .4rem;
   }

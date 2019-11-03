@@ -8,5 +8,7 @@ export default {
     tooManyRequest: 'Se han realizado demasiadas solicitudes'
   },
   home: 'inicio',
-  success: 'La acción fue exitosa'
+  mentoring_system: 'Sistema de recomendaciones',
+  success: 'La acción fue exitosa',
+  tutorship: 'tutoría'
 }
