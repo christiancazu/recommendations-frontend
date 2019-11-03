@@ -10,5 +10,7 @@ export default {
   home: 'inicio',
   mentoring_system: 'Sistema de recomendaciones',
   success: 'La acción fue exitosa',
+  signIn: 'Ingresar',
+  signUp: 'Registrar',
   tutorship: 'tutoría'
 }

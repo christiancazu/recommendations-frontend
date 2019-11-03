@@ -10,5 +10,7 @@ export default {
   home: 'home',
   mentoring_system: 'Mentoring system',
   success: 'Action was successful',
+  signIn: 'Sign In',
+  signUp: 'Sign Up',
   tutorship: 'tutorship'
 }

@@ -48,6 +48,16 @@
         class="gt-xs"
       />
 
+      <template>
+        <q-btn
+          v-for="dialog in dialogs" :key="dialog.name"
+          :label="$t(dialog.name)"
+          stretch flat
+          class="gt-xs text-shadow"
+          @click="openDialog(dialog.stateName)"
+        />
+      </template>
+
       <locale-dropdown gt-xs />
 
     </q-toolbar>
@@ -80,6 +90,17 @@
         </q-item-section>
       </q-item>
 
+      <q-item
+        v-for="dialog in dialogs" :key="dialog.name"
+        clickable
+        class="text-center text-uppercase text-black"
+        @click="openDialog(dialog.stateName)"
+      >
+        <q-item-section>
+          <q-item-label>{{ $t(dialog.name) }}</q-item-label>
+        </q-item-section>
+      </q-item>
+
       <locale-dropdown arrow-right />
 
     </q-list>
@@ -90,10 +111,14 @@
 <script>
 export default {
   name: 'TheToolbar',
-  
+
   data () {
     return {
       navs: ['about'],
+      dialogs: [
+        { name: 'signIn', stateName: 'dialogSignIn' },
+        { name: 'signUp', stateName: 'dialogSignUp' }
+      ],
       leftDrawerOpen: false,
       elevatedOnPosition: 240,
       scroll: {
@@ -113,8 +138,8 @@ export default {
      * to apply elevated-on-scroll-up css clss
      */
     elevatedOnScrollUp () {
-      return this.scroll.position < this.elevatedOnPosition 
-        && this.scroll.direction === 'up' 
+      return this.scroll.position < this.elevatedOnPosition
+        && this.scroll.direction === 'up'
         && this.$route.name === 'home'
     },
 
@@ -135,9 +160,16 @@ export default {
 
   mounted () {
     this.verifyCurrentRouteToAssignBgColor()
-  },  
+  },
 
   methods: {
+    /**
+     * set dynamic dialog & stateName
+     */
+    openDialog (dialogStateName) {
+      this.$store.commit('dialogsVisibilities/SET_DYNAMIC_MAIN_DIALOG', dialogStateName)
+      this.$store.commit('dialogsVisibilities/OPEN_DIALOG', dialogStateName)
+    },
     /**
      * handler of q-scroll-observer component
      */
@@ -164,7 +196,7 @@ export default {
   animation: 1s forwards fadeInElevated;
 }
 .elevated-on-scroll-up {
-  animation: 1s forwards fadeOutElevated; 
+  animation: 1s forwards fadeOutElevated;
 }
 @keyframes fadeInElevated {
   0% {  opacity: 0; }
