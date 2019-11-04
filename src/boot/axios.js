@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
   baseURL: process.env.API_URL
 })
 
-export default async ({ app, Vue, store, router }) => {
+export default async ({ app, Vue /*store, router*/ }) => {
   Vue.prototype.$axios = axiosInstance
 
   // request interceptor

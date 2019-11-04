@@ -1,7 +1,7 @@
 <template>
-<base-dialog dialog-state-name="dialogSignUp">
+<base-dialog-form dialog-state-name="dialogSignUp">
   <h6>DialogSignUp</h6>
-</base-dialog>
+</base-dialog-form>
 </template>
 
 <script>

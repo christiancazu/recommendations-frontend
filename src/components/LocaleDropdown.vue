@@ -5,10 +5,8 @@
   icon="language"
   stretch flat
   :class="{
-    'gt-xs': gtXs,
-    'text-shadow' : gtXs,
-    'arrow-right full-width': arrowRight,
-    'sidebar-locale': arrowRight
+    'gt-xs text-shadow': gtXs,
+    'arrow-right full-width sidebar-locale': arrowRight
   }"
 >
   <q-list separator>
@@ -31,7 +29,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'LocaleDropdown',
-  
+
   filters: {
     languageName (val) {
       return val === 'en' ? 'English' : 'Español'
@@ -60,7 +58,7 @@ export default {
     setLocale (locale) {
       this.$store.commit('i18n/SET_LOCALE', locale)
     }
-  }  
+  }
 }
 </script>
 

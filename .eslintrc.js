@@ -32,6 +32,7 @@ module.exports = {
     'one-var': 'off',
     'prefer-promise-reject-errors': 'off',
     'no-trailing-spaces': 'error',
+    'no-unused-vars': ['error', { args: 'all' }],
     semi: ['error', 'never'],
     indent: [
       'error',

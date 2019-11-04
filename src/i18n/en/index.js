@@ -1,5 +1,6 @@
 export default {
   about: 'about',
+  email: 'email',
   error: {
     default: 'An error has occurred',
     invalidData: 'Invalid data',
@@ -9,6 +10,7 @@ export default {
   },
   home: 'home',
   mentoring_system: 'Mentoring system',
+  password: 'password',
   success: 'Action was successful',
   signIn: 'Sign In',
   signUp: 'Sign Up',

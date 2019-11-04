@@ -60,6 +60,7 @@ module.exports = function (ctx) {
         'QForm',
         'QHeader',
         'QIcon',
+        'QInput',
         'QItem',
         'QItemLabel',
         'QItemSection',

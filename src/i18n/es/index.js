@@ -1,5 +1,6 @@
 export default {
   about: 'sobre mi',
+  email: 'correo electrónico',
   error: {
     default: 'Ha ocurrido un error',
     invalidData: 'Los datos son inválidos',
@@ -9,6 +10,7 @@ export default {
   },
   home: 'inicio',
   mentoring_system: 'Sistema de recomendaciones',
+  password: 'contraseña',
   success: 'La acción fue exitosa',
   signIn: 'Ingresar',
   signUp: 'Registrar',
