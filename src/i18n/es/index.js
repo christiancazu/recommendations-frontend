@@ -10,9 +10,12 @@ export default {
   },
   home: 'inicio',
   mentoring_system: 'Sistema de recomendaciones',
+  names: 'nombres',
   password: 'contraseña',
+  passwordConfirm: 'confirmar contraseña',
   success: 'La acción fue exitosa',
   signIn: 'Ingresar',
   signUp: 'Registrar',
+  surnames: 'apellidos',
   tutorship: 'tutoría'
 }

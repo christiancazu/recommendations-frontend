@@ -1,6 +1,7 @@
 <template>
 <q-dialog
   v-model="$store.state.dialogsVisibilities[dialogStateName]"
+  @hide="$store.commit('errors/CLEAN_ERRORS')"
 >
   <q-card class="full-width">
     <q-card-section>
@@ -13,27 +14,28 @@
 
     <q-card-section>
       <q-form
-        class="q-gutter-xs"
+        class="q-pa-sm-none q-pa-md-md"
         @submit="onSubmit"
       >
 
         <q-input
-          v-for="(v, field, index) in form" :key="index"
-          v-model="form[field]"
-          v-validate="formRules[field]"
-          :data-vv-as="$t(field)"
-          :label="$t(field)"
-          :error-message="formErrors[field]"
-          :error="!!formErrors[field]"
+          v-for="(item, key, index) in form" :key="index"
+          :ref="formSettings[key].ref"
+          v-model="form[key]"
+          v-validate="formRules[key]"
+          :data-vv-as="$t(key)"
+          :label="$t(key)"
+          :error-message="formErrors[key]"
+          :error="!!formErrors[key]"
           color="secondary"
-          :name="field"
-          :type="formSettings[field].type"
+          :name="key"
+          :type="formSettings[key].type"
           bottom-slots
           autocomplete="off"
         >
           <template v-slot:prepend>
             <q-icon
-              :name="formSettings[field].icon"
+              :name="formSettings[key].icon"
               color="secondary"
             />
           </template>

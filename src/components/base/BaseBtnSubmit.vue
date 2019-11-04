@@ -4,7 +4,7 @@
   :label="btnSubmitLabel"
   type="submit"
   color="secondary"
-  class="full-width"
+  class="full-width q-mt-md"
   push
 />
 </template>

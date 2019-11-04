@@ -10,9 +10,12 @@ export default {
   },
   home: 'home',
   mentoring_system: 'Mentoring system',
+  names: 'names',
   password: 'password',
+  passwordConfirm: 'confirm password',
   success: 'Action was successful',
   signIn: 'Sign In',
   signUp: 'Sign Up',
+  surnames: 'surnames',
   tutorship: 'tutorship'
 }

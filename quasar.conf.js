@@ -35,6 +35,7 @@ module.exports = function (ctx) {
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
+      cssAddon: true,
       // iconSet: 'ionicons-v4', // Quasar icon set
       // lang: 'de', // Quasar language pack
 
@@ -89,7 +90,9 @@ module.exports = function (ctx) {
       config: {
         notify: {
           position: 'top-right',
-          classes: 'text-h6 shadow-10'
+          classes: 'shadow-10',
+          closeBtn: 'x',
+          classes: 'text-subtitle2'
         },
         loadingBar: {
           color: 'secondary',
