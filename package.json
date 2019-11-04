@@ -1,8 +1,8 @@
 {
-  "name": "recommendations-frontend",
+  "name": "tutorship-frontend",
   "version": "0.0.1",
-  "description": "recommendations system for tutory on UTP",
-  "productName": "Recommendations UTP",
+  "description": "tutorship system for UTP",
+  "productName": "TUTORÍA - UTP",
   "cordovaId": "org.cordova.quasar.app",
   "capacitorId": "",
   "author": "Christian Carrillo Zúñiga <christiancazu@gmail.com>",
