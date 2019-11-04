@@ -28,7 +28,7 @@
           class="container-home-text-center"
         >
           <h4>
-            {{ $t('mentoring_system') }}
+            {{ $t('mentoringSystem') }}
           </h4>
         </div>
       </transition>

@@ -17,7 +17,6 @@
         class="q-pa-sm-none q-pa-md-md"
         @submit="onSubmit"
       >
-
         <q-input
           v-for="(item, key, index) in form" :key="index"
           :ref="formSettings[key].ref"
@@ -54,6 +53,8 @@ import validateFormMixin from 'src/mixins/validateFormMixin'
 
 import { mapState, mapMutations } from 'vuex'
 
+import { Notify } from 'quasar'
+
 export default {
   mixins: [validateFormMixin],
 
@@ -63,7 +64,12 @@ export default {
     formRules: { type: Object, required: true },
     formSettings: { type: Object, required: true },
     dialogFormTitle: { type: String, default: 'submit' },
-    btnSubmitLabel: { type: String, required: true }
+    btnSubmitLabel: { type: String, required: true },
+    messageToastBaseName: { type: String, required: true },
+    messageToastAction: { type: String, required: true },
+    storeBase:{ type: String, required: true },
+    storeAction: { type: String, required: true }
+
   },
 
   computed: {
@@ -77,19 +83,15 @@ export default {
       if (await this.$_validateFormMixin_isValid()) {
         this.$store.commit('spinners/ENABLE_PROCESSING_FORM')
         try {
-          console.warn('gaaaaaa')
-          // await this.$store.dispatch('auth/signIn', this.form)
-          // this.successNotify()
-          // this.redirectedUser()
+          await this.$store.dispatch(`${this.storeBase}/${this.storeAction}`, this.form)
+          Notify.create({
+            message: this.$t(`${this.messageToastBaseName}.${this.messageToastAction}`),
+            color: 'positive',
+            icon: 'check_circle'
+          })
+          this.$emit('response-success')
         }
-        catch (error) {
-          console.warn('error')
-          // Notify.create({
-          //   message: this.$t('error.data'),
-          //   color: 'negative',
-          //   icon: 'error'
-          // })
-        }
+        catch (error) {}
         this.$store.commit('spinners/DISABLE_PROCESSING_FORM')
       }
     },

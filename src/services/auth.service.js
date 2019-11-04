@@ -5,5 +5,7 @@ export default {
 
   signIn: params => apiService.post('/auth/signIn', params),
 
+  signUp: params => apiService.post('/auth/signUp', params),
+
   getUser: () => apiService.get(`/users/me`)
 }

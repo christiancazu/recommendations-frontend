@@ -14,7 +14,17 @@
   text-shadow: 1px 1px 6px black;
 }
 
+// toast notifications close icon
+.q-notification__actions {
+  color: $white;
+
+  button div div::before {
+    content: "\2716";
+  }
+}
+
 // page transitions
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;

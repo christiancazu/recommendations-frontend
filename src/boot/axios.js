@@ -6,18 +6,18 @@ const axiosInstance = axios.create({
   baseURL: process.env.API_URL
 })
 
-export default async ({ app, Vue /*store, router*/ }) => {
+export default async ({ app, Vue, store /*router*/ }) => {
   Vue.prototype.$axios = axiosInstance
 
   // request interceptor
   axiosInstance.interceptors.request.use(config => {
     // send token in header request
-    // const token = store.state.auth.token
-    // if (token) {
-    //   config.headers.common['Authorization'] = `Bearer ${token}`
-    // }
+    const token = store.state.auth.token
+    if (token) {
+      config.headers.common['Authorization'] = `Bearer ${token}`
+    }
 
-    // store.commit('errors/CLEAN_ERRORS')
+    store.commit('errors/CLEAN_ERRORS')
     return config
   })
 
@@ -55,7 +55,7 @@ export default async ({ app, Vue /*store, router*/ }) => {
       case 422:
         message = 'invalidData'
 
-        // store.commit('errors/SET_ERRORS', error.response.data.errors)
+        store.commit('errors/SET_ERRORS', error.response.data.message)
         break
         // too many request
       case 429:

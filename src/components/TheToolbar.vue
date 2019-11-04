@@ -48,13 +48,21 @@
         class="gt-xs"
       />
 
-      <template>
+      <template v-if="!user">
         <q-btn
           v-for="dialog in dialogs" :key="dialog.name"
           :label="$t(dialog.name)"
           stretch flat
           class="gt-xs text-shadow"
           @click="openDialog(dialog.stateName)"
+        />
+      </template>
+      <template v-else>
+        <q-btn
+          :label="$t('logout.default')"
+          stretch flat
+          class="gt-xs text-shadow"
+          @click="logout()"
         />
       </template>
 
@@ -90,16 +98,29 @@
         </q-item-section>
       </q-item>
 
-      <q-item
-        v-for="dialog in dialogs" :key="dialog.name"
-        clickable
-        class="text-center text-uppercase text-black"
-        @click="openDialog(dialog.stateName)"
-      >
-        <q-item-section>
-          <q-item-label>{{ $t(dialog.name) }}</q-item-label>
-        </q-item-section>
-      </q-item>
+      <template v-if="!user">
+        <q-item
+          v-for="dialog in dialogs" :key="dialog.name"
+          clickable
+          class="text-center text-uppercase text-black"
+          @click="openDialog(dialog.stateName)"
+        >
+          <q-item-section>
+            <q-item-label>{{ $t(dialog.name) }}</q-item-label>
+          </q-item-section>
+        </q-item>
+      </template>
+      <template v-else>
+        <q-item
+          clickable
+          class="text-center text-uppercase text-black"
+          @click="logout()"
+        >
+          <q-item-section>
+            <q-item-label>{{ $t('logout.default') }}</q-item-label>
+          </q-item-section>
+        </q-item>
+      </template>
 
       <locale-dropdown arrow-right />
 
@@ -109,6 +130,10 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
+import { Notify } from 'quasar'
+
 export default {
   name: 'TheToolbar',
 
@@ -130,6 +155,8 @@ export default {
   },
 
   computed: {
+    ...mapState('auth', ['user']),
+
     isScreenSm () {
       return this.$q.screen.lt.sm
     },
@@ -176,6 +203,16 @@ export default {
     onScrollObserver (info) {
       this.scroll.position = info.position
       this.scroll.direction = info.direction
+    },
+
+    logout () {
+      this.$store.commit('auth/PURGE_AUTH')
+      this.$router.push({ name: 'home' })
+      Notify.create({
+        message: this.$t('logout.successful'),
+        color: 'positive',
+        icon: 'check_circle'
+      })
     },
 
     verifyCurrentRouteToAssignBgColor (name = this.$route.name) {

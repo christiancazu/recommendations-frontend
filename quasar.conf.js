@@ -91,7 +91,7 @@ module.exports = function (ctx) {
         notify: {
           position: 'top-right',
           classes: 'shadow-10',
-          closeBtn: 'x',
+          closeBtn: ' ',
           classes: 'text-subtitle2'
         },
         loadingBar: {

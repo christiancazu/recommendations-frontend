@@ -9,10 +9,23 @@ export default {
     tooManyRequest: 'Too many requests have been made'
   },
   home: 'home',
-  mentoring_system: 'Mentoring system',
+  login: {
+    again: 'Sign in again',
+    default: 'Log in',
+    join: 'join',
+    successful: 'Login successful'
+  },
+  logout: {
+    default: 'Logout',
+    successful: 'Logout successful'
+  },
+  mentoringSystem: 'Mentoring system',
   names: 'names',
   password: 'password',
   passwordConfirm: 'confirm password',
+  register: {
+    successful: 'has been registered successful'
+  },
   success: 'Action was successful',
   signIn: 'Sign In',
   signUp: 'Sign Up',

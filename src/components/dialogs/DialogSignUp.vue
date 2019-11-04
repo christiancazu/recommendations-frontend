@@ -6,6 +6,10 @@
   :form-settings="formSettings"
   :btn-submit-label="btnSubmitLabel"
   :dialog-form-title="dialogFormTitle"
+  :message-toast-base-name="messageToastBaseName"
+  :message-toast-action="messageToastAction"
+  :store-base="storeBase"
+  :store-action="storeAction"
 />
 </template>
 
@@ -18,6 +22,10 @@ export default {
       dialogStateName: 'dialogSignUp',
       btnSubmitLabel: 'Registrar',
       dialogFormTitle: 'Crear una cuenta',
+      messageToastBaseName: 'register',
+      messageToastAction: 'successful',
+      storeBase: 'auth',
+      storeAction: 'signUp',
       form: {
         email: '',
         password: '',
@@ -27,8 +35,8 @@ export default {
       },
       formRules: {
         email: 'required|email',
-        password: 'required',
-        passwordConfirm: 'required|confirmed:password',
+        password: 'required|min:8',
+        passwordConfirm: 'required|min:8|confirmed:password',
         names: 'required',
         surnames: 'required',
       },

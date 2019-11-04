@@ -42,6 +42,14 @@ export const actions = {
     }
   },
 
+  signUp: async ({}, form) => {
+    try {
+      await authService.signUp(form)
+    } catch (error) {
+      throw error
+    }
+  },
+
   fetchUser: async ({ commit }) => {
     try {
       const { data } = await authService.getUser()
