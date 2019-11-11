@@ -69,7 +69,6 @@ export default {
     messageToastAction: { type: String, required: true },
     storeBase:{ type: String, required: true },
     storeAction: { type: String, required: true }
-
   },
 
   computed: {

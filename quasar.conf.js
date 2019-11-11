@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable array-bracket-newline */
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
@@ -90,9 +92,8 @@ module.exports = function (ctx) {
       config: {
         notify: {
           position: 'top-right',
-          classes: 'shadow-10',
-          closeBtn: ' ',
-          classes: 'text-subtitle2'
+          classes: 'shadow-10 text-subtitle2',
+          closeBtn: ' '
         },
         loadingBar: {
           color: 'secondary',
@@ -123,6 +124,7 @@ module.exports = function (ctx) {
           loader: 'eslint-loader',
           exclude: /node_modules/,
           options: {
+            // eslint-disable-next-line no-undef
             formatter: require('eslint').CLIEngine.getFormatter('stylish')
           }
         })

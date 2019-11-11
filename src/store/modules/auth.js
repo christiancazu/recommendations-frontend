@@ -33,21 +33,14 @@ export const mutations = {
 
 export const actions = {
   signIn: async ({ commit }, form) => {
-    try {
-      const { data } = await authService.signIn(form)
-      commit('SAVE_TOKEN', { token: data.token })
-      commit('SET_USER', data.user)
-    } catch (error) {
-      throw error
-    }
+    const { data } = await authService.signIn(form)
+
+    commit('SAVE_TOKEN', { token: data.token })
+    commit('SET_USER', data.user)
   },
 
   signUp: async ({}, form) => {
-    try {
-      await authService.signUp(form)
-    } catch (error) {
-      throw error
-    }
+    await authService.signUp(form)
   },
 
   fetchUser: async ({ commit }) => {
@@ -56,7 +49,6 @@ export const actions = {
       commit('SET_USER_SUCCESS', data)
     } catch (error) {
       commit('PURGE_AUTH')
-      throw error
     }
   },
 

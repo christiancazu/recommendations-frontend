@@ -5,17 +5,17 @@
   <q-header
     :elevated="elevatedOnScrollDown"
     :class="[
-      { 'elevated-on-scroll-up': elevatedOnScrollUp,
-        'bg-transparent': !elevatedOnScrollDown
-      },
+      { 'elevated-on-scroll-up': elevatedOnScrollUp, 'bg-transparent': !elevatedOnScrollDown },
       [`row justify-center`, 'text-shadow']
     ]"
   >
     <q-toolbar class="col-md-10">
-
       <!-- left items -->
       <q-btn
-        flat outline dense round
+        flat
+        outline
+        dense
+        round
         aria-label="Menu"
         class="lt-sm text-white"
         @click="leftDrawerOpen = !leftDrawerOpen"
@@ -25,8 +25,7 @@
 
       <q-btn
         :to="{ name: 'home' }"
-        flat stretch
-        :class="{ 'absolute-center': isScreenSm }"
+        flat stretch :class="{ 'absolute-center': isScreenSm }"
       >
         <q-avatar color="white">
           <img
@@ -41,18 +40,22 @@
 
       <!-- right items -->
       <q-btn
-        v-for="nav in navs" :key="nav"
+        v-for="nav in navs"
+        :key="nav"
         :label="$t(nav)"
         :to="{ name: nav }"
-        stretch flat
+        stretch
+        flat
         class="gt-xs"
       />
 
       <template v-if="!user">
         <q-btn
-          v-for="dialog in dialogs" :key="dialog.name"
+          v-for="dialog in dialogs"
+          :key="dialog.name"
           :label="$t(dialog.name)"
-          stretch flat
+          stretch
+          flat
           class="gt-xs text-shadow"
           @click="openDialog(dialog.stateName)"
         />
@@ -60,27 +63,25 @@
       <template v-else>
         <q-btn
           :label="$t('logout.default')"
-          stretch flat
+          stretch
+          flat
           class="gt-xs text-shadow"
           @click="logout()"
         />
       </template>
 
       <locale-dropdown gt-xs />
-
     </q-toolbar>
   </q-header>
 
   <q-drawer
     v-model="leftDrawerOpen"
-    :width="160"
-    behavior="mobile"
+    :width="160" behavior="mobile"
   >
     <q-list>
       <q-item
         :to="{ name: 'home' }"
-        clickable
-        class="text-center text-uppercase text-black"
+        clickable class="text-center text-uppercase text-black"
       >
         <q-item-section>
           <q-item-label>{{ $t('home') }}</q-item-label>
@@ -88,7 +89,8 @@
       </q-item>
 
       <q-item
-        v-for="nav in navs" :key="nav"
+        v-for="nav in navs"
+        :key="nav"
         :to="{ name: nav }"
         clickable
         class="text-center text-uppercase text-black"
@@ -100,7 +102,8 @@
 
       <template v-if="!user">
         <q-item
-          v-for="dialog in dialogs" :key="dialog.name"
+          v-for="dialog in dialogs"
+          :key="dialog.name"
           clickable
           class="text-center text-uppercase text-black"
           @click="openDialog(dialog.stateName)"
@@ -123,7 +126,6 @@
       </template>
 
       <locale-dropdown arrow-right />
-
     </q-list>
   </q-drawer>
 </div>
@@ -165,9 +167,11 @@ export default {
      * to apply elevated-on-scroll-up css clss
      */
     elevatedOnScrollUp () {
-      return this.scroll.position < this.elevatedOnPosition
-        && this.scroll.direction === 'up'
-        && this.$route.name === 'home'
+      return (
+        this.scroll.position < this.elevatedOnPosition &&
+        this.scroll.direction === 'up' &&
+        this.$route.name === 'home'
+      )
     },
 
     /**
@@ -224,7 +228,7 @@ export default {
 
 <style lang="scss" scoped>
 .img-logo {
-  transform: scale(.9)
+  transform: scale(0.9);
 }
 .q-header {
   transition: background-color 1s;
@@ -236,11 +240,19 @@ export default {
   animation: 1s forwards fadeOutElevated;
 }
 @keyframes fadeInElevated {
-  0% {  opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 @keyframes fadeOutElevated {
-  0% { box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0px 10px rgba(0, 0, 0, 0.24); }
-  100% { box-shadow: 0 }
+  0% {
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2), 0 0px 10px rgba(0, 0, 0, 0.24);
+  }
+  100% {
+    box-shadow: 0;
+  }
 }
 </style>

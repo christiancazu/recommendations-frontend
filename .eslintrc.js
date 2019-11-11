@@ -7,12 +7,16 @@ module.exports = {
   },
 
   env: {
-    browser: true
+    browser: true,
+    amd: true
   },
 
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
   // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ['plugin:vue/recommended', 'prettier/vue'],
+  extends: [
+    'plugin:vue/recommended', //
+    'eslint:recommended'
+  ],
   // required to lint *.vue files
   plugins: ['vue'],
 
@@ -28,11 +32,22 @@ module.exports = {
   rules: {
     // allow async-await
     'generator-star-spacing': 'off',
+    // allow paren-less arrow functions
+    'arrow-parens': 'off',
+    'one-var': 'off',
+    'prefer-promise-reject-errors': 'off',
+
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    // allow async-await
+    'generator-star-spacing': 'off',
     'arrow-parens': 'off',
     'one-var': 'off',
     'prefer-promise-reject-errors': 'off',
     'no-trailing-spaces': 'error',
     'newline-before-return': 'off',
+    'no-empty-pattern': 'off',
+    'no-empty': ['error', { allowEmptyCatch: true }],
     'no-unused-vars': ['error', { args: 'all' }],
     semi: ['error', 'never'],
     indent: [
