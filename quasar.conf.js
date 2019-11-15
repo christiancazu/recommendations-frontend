@@ -52,12 +52,14 @@ module.exports = function (ctx) {
 
       components: [
         'QAvatar',
+        'QBadge',
         'QBtnDropdown',
         'QBtn',
         'QCard',
         'QCardSection',
         'QCarousel',
         'QCarouselSlide',
+        'QChip',
         'QDialog',
         'QDrawer',
         'QForm',

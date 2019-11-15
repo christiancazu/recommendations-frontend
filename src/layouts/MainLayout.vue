@@ -3,8 +3,11 @@
 
   <the-toolbar />
 
-  <q-page-container>
-    <transition name="fade">
+  <q-page-container :class="{ 'q-pt-nothing': $route.name === 'home' }">
+    <transition
+      name="fade"
+      mode="out-in"
+    >
       <router-view />
     </transition>
   </q-page-container>

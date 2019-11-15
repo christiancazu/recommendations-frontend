@@ -30,5 +30,8 @@ export default {
   signIn: 'Sign In',
   signUp: 'Sign Up',
   surnames: 'surnames',
-  tutorship: 'tutorship'
+  tutorship: 'tutorship',
+  update: {
+    successful: 'has been updated successful'
+  }
 }

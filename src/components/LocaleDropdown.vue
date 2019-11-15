@@ -5,7 +5,7 @@
   icon="language"
   stretch flat
   :class="{
-    'gt-xs text-shadow': gtXs,
+    'gt-xs text-shadow q-pr-none': gtXs,
     'arrow-right full-width sidebar-locale': arrowRight
   }"
 >

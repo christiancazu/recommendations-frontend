@@ -5,17 +5,19 @@
   <q-header
     :elevated="elevatedOnScrollDown"
     :class="[
-      { 'elevated-on-scroll-up': elevatedOnScrollUp, 'bg-transparent': !elevatedOnScrollDown },
+      {
+        'elevated-on-scroll-up': elevatedOnScrollUp,
+        'bg-transparent': !elevatedOnScrollDown
+      },
       [`row justify-center`, 'text-shadow']
     ]"
   >
-    <q-toolbar class="col-md-10">
+    <q-toolbar
+      class="col-12 col-md-9"
+    >
       <!-- left items -->
       <q-btn
-        flat
-        outline
-        dense
-        round
+        flat outline dense round
         aria-label="Menu"
         class="lt-sm text-white"
         @click="leftDrawerOpen = !leftDrawerOpen"
@@ -25,7 +27,11 @@
 
       <q-btn
         :to="{ name: 'home' }"
-        flat stretch :class="{ 'absolute-center': isScreenSm }"
+        flat stretch
+        :class="[
+          { 'absolute-center': isScreenSm },
+          ['q-px-none']
+        ]"
       >
         <q-avatar color="white">
           <img
@@ -40,31 +46,33 @@
 
       <!-- right items -->
       <q-btn
-        v-for="nav in navs"
-        :key="nav"
+        v-for="nav in navs" :key="nav"
         :label="$t(nav)"
         :to="{ name: nav }"
-        stretch
-        flat
+        stretch flat
         class="gt-xs"
       />
 
       <template v-if="!user">
         <q-btn
-          v-for="dialog in dialogs"
-          :key="dialog.name"
+          v-for="dialog in dialogs" :key="dialog.name"
           :label="$t(dialog.name)"
-          stretch
-          flat
+          stretch flat
           class="gt-xs text-shadow"
           @click="openDialog(dialog.stateName)"
         />
       </template>
       <template v-else>
         <q-btn
+          v-if="$route.name === 'home'"
+          label="Panel de control"
+          stretch flat
+          class="gt-xs text-shadow"
+          :to="{ name: 'dashboard' }"
+        />
+        <q-btn
           :label="$t('logout.default')"
-          stretch
-          flat
+          stretch flat
           class="gt-xs text-shadow"
           @click="logout()"
         />
@@ -81,7 +89,8 @@
     <q-list>
       <q-item
         :to="{ name: 'home' }"
-        clickable class="text-center text-uppercase text-black"
+        clickable
+        class="text-center text-uppercase text-black"
       >
         <q-item-section>
           <q-item-label>{{ $t('home') }}</q-item-label>
@@ -89,8 +98,7 @@
       </q-item>
 
       <q-item
-        v-for="nav in navs"
-        :key="nav"
+        v-for="nav in navs" :key="nav"
         :to="{ name: nav }"
         clickable
         class="text-center text-uppercase text-black"
@@ -102,8 +110,7 @@
 
       <template v-if="!user">
         <q-item
-          v-for="dialog in dialogs"
-          :key="dialog.name"
+          v-for="dialog in dialogs" :key="dialog.name"
           clickable
           class="text-center text-uppercase text-black"
           @click="openDialog(dialog.stateName)"
@@ -115,6 +122,16 @@
       </template>
       <template v-else>
         <q-item
+          v-if="$route.name === 'home'"
+          clickable
+          class="text-center text-uppercase text-black"
+          :to="{ name: 'dashboard' }"
+        >
+          <q-item-section>
+            <q-item-label>Panel de control</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item
           clickable
           class="text-center text-uppercase text-black" @click="logout()"
         >
@@ -125,6 +142,7 @@
       </template>
 
       <locale-dropdown arrow-right />
+
     </q-list>
   </q-drawer>
 </div>
@@ -140,7 +158,7 @@ export default {
 
   data () {
     return {
-      navs: ['dashboard'],
+      navs: [],
       dialogs: [
         { name: 'signIn', stateName: 'dialogSignIn' },
         { name: 'signUp', stateName: 'dialogSignUp' }

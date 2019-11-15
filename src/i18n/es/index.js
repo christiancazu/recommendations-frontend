@@ -17,7 +17,7 @@ export default {
   },
   logout: {
     default: 'salir',
-    success: 'Ha cerrado sesión correctamente'
+    successful: 'Ha cerrado sesión correctamente'
   },
   mentoringSystem: 'Sistema de recomendaciones',
   names: 'nombres',
@@ -30,5 +30,8 @@ export default {
   signIn: 'Ingresar',
   signUp: 'Registrar',
   surnames: 'apellidos',
-  tutorship: 'tutoría'
+  tutorship: 'tutoría',
+  update: {
+    successful: 'Se ha actualizado correctamente'
+  }
 }

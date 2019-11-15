@@ -44,7 +44,7 @@ export default {
 
   methods: {
     responseSuccess () {
-      this.$router.push({ name: 'about' })
+      this.$router.push({ name: 'dashboard' })
     }
   },
 }
