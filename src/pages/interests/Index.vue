@@ -122,7 +122,7 @@ export default {
         { name: 'python', label: 'Python', value: false },
         { name: 'javascript', label: 'JavaScript', value: false }
       ],
-      form: []
+      form: {}
     }
   },
 

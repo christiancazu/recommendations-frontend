@@ -43,7 +43,7 @@ export default {
     return {
       options: [
         { link: 'dashboard', label: "Panel de control", icon: 'dashboard' },
-        { link: 'tutorship', label: "Tutoría", icon: 'supervisor_account' },
+        { link: 'tutorship', label: "Tutoría", icon: 'school' },
         { link: 'interests', label: "Interéses", icon: 'person' }
       ]
     }
