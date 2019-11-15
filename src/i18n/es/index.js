@@ -1,5 +1,5 @@
 export default {
-  about: 'sobre mi',
+  dashboard: 'tablero',
   email: 'correo electrónico',
   error: {
     default: 'Ha ocurrido un error',

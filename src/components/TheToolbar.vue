@@ -116,8 +116,7 @@
       <template v-else>
         <q-item
           clickable
-          class="text-center text-uppercase text-black"
-          @click="logout()"
+          class="text-center text-uppercase text-black" @click="logout()"
         >
           <q-item-section>
             <q-item-label>{{ $t('logout.default') }}</q-item-label>
@@ -141,7 +140,7 @@ export default {
 
   data () {
     return {
-      navs: ['about'],
+      navs: ['dashboard'],
       dialogs: [
         { name: 'signIn', stateName: 'dialogSignIn' },
         { name: 'signUp', stateName: 'dialogSignUp' }
