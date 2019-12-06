@@ -8,14 +8,14 @@
     @submit="onSubmit"
   >
     <q-card-section>
-      <div class="text-h6 text-primary">Establezca su interéses</div>
+      <div class="text-h6 text-primary">Establezca sus interéses</div>
     </q-card-section>
 
     <q-separator inset />
 
     <!-- areas -->
     <q-card-section>
-      <div class="text-subtitle2 text-secondary">Areas</div>
+      <div class="text-subtitle2 text-secondary">Áreas</div>
     </q-card-section>
 
     <q-card-section>
@@ -120,7 +120,10 @@ export default {
         { name: 'cplusplus', label: 'C++', value: false },
         { name: 'ruby', label: 'Ruby', value: false },
         { name: 'python', label: 'Python', value: false },
-        { name: 'javascript', label: 'JavaScript', value: false }
+        { name: 'javascript', label: 'JavaScript', value: false },
+        { name: 'mysql', label: 'DB MySQL', value: false },
+        { name: 'sqlserver', label: 'DB SQL Server', value: false },
+        { name: 'mongo', label: 'DB Mongo', value: false }
       ],
       form: {}
     }
@@ -178,9 +181,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.card-profile {
-  // background-color: $white;
-}
-</style>

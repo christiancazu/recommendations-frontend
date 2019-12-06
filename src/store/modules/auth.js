@@ -9,7 +9,10 @@ export const state = {
 
 export const getters = {
   checkUser: state => state.user,
-  isAdmin: state => state.user.roles.find(u => u === 'admin')
+
+  isAdmin: state => state.user.roles.find(u => u === 'admin'),
+
+  isTutor: state => state.user.roles.find(u => u === 'tutor')
 }
 
 export const mutations = {

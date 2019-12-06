@@ -79,7 +79,8 @@ module.exports = function (ctx) {
         'QScrollObserver',
         'QSeparator',
         'QSpace',
-        'QToolbar'
+        'QToolbar',
+        'QToggle'
       ],
 
       directives: [
@@ -98,7 +99,7 @@ module.exports = function (ctx) {
         notify: {
           position: 'top-right',
           classes: 'shadow-10 text-subtitle2',
-          closeBtn: ' '
+          closeBtn: ''
         },
         loadingBar: {
           color: 'secondary',

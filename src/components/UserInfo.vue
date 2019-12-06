@@ -6,7 +6,7 @@
     <q-avatar
       size="48px"
     >
-      <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+      <img src="statics/current-user.png">
       <!-- <q-badge
         floating
         color="teal"
